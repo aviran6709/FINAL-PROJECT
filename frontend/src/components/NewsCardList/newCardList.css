@@ -27,6 +27,17 @@ max-width: fit-content;
   margin-top: 60px;
   padding-top: 20px;
 }
+.error-server{
+  margin: auto;
+  font-family: "Roboto",Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+}
+
+
 .news-results__btn {
   background: #ffffff;
   border-radius: 80px;

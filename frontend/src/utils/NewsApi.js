@@ -4,7 +4,6 @@
     let startSearch =  new Date(); 
     startSearch.setDate(startSearch.getDate() - 7)
 
-console.log();
             const url = 'https://nomoreparties.co/news/v2/everything?' +
             `q=${searchInput}&` +
             `from=${startSearch.toISOString()}&` +
@@ -15,11 +14,12 @@ console.log();
 
           return  fetch(url)
             .then(function(res) {
+              console.log(res);
               if(res.ok){
           return res.json()
-              }
-            }).catch(console.log);
-        
+              }else{
+                return false}
+          }).catch(console.log)
           }
 
 export default getNewsRequest

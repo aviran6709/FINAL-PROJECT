@@ -7,10 +7,15 @@ import React from "react";
 let saveStatus
 const data =  React.useContext(UserContext);
 const savedCardData =  data.savedCard
-// saveStatus = cardData.some((i) => i.title === savedCardData.title);
+console.log(data.badConnectionToServer);
+if(data.badConnectionToServer)
+{
+  return(<span className="error-server">Sorry, something went wrong during the request. There may be a connection issue or the server may be down. Please try again later.</span>)
+}
 if(props.isSearch){
   return <Preloader isFund ={true}></Preloader>
 }
+
   if(cardData.length !== 0){
 return(
 <section className='news-results'>

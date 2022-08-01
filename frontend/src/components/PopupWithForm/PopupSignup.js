@@ -6,6 +6,7 @@ import  {useFormWithValidation}  from "../NewsCard/FormValidation";
 
 const PopupSignup= (props)=>{
     const [isSuccess, setIsSuccess] = React.useState(false);
+    //emailStatus stands for handel email error
     const [emailStatus, setEmailStatus] = React.useState("");
      const { values, handleChange, errors, isValid, resetForm   } =  useFormWithValidation()
 
@@ -38,11 +39,6 @@ const onSubmitSignup = async (evt) => {
       setEmailStatus(status)
     }
     
-
-    if(status){
-  
-    }
-  
   };
 
 if(isSuccess){
@@ -78,7 +74,7 @@ if(isSuccess){
                 required
                 minLength="5"
                 maxLength="40"
-                // autoComplete="on"
+                autoComplete="on"
                 className="popup__input"
                 onChange={handleChange}
               />
@@ -96,7 +92,7 @@ if(isSuccess){
                 minLength="8"
                 maxLength="40"
                 onChange={handleChange}
-                // autoComplete="on"
+                autoComplete="on"
                 className="popup__input"
                
               />

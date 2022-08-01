@@ -85,12 +85,13 @@ function Navigation(props) {
           <li className="navigation__links">
             <button
               onClick={
-                 isLoggedIn && !isItMenu
+                isLoggedIn && !isItMenu
                   ? props.logout
-                  :isItMenu && isLoggedIn ?props.logout : () => {
+                  : isItMenu && isLoggedIn
+                  ? props.logout
+                  : () => {
                       setIsItMenu(false);
                       props.openPopup();
-                    
                     }
               }
               className={
