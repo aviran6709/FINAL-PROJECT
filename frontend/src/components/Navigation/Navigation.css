@@ -101,7 +101,6 @@ font-style: normal;
   height: 48px;
   margin-right: 104px;
   cursor: pointer;
-  
 }
 
 .navigation__btn-signout {
@@ -120,15 +119,11 @@ font-style: normal;
   font-size: 18px;
   line-height: 24px;
   cursor: pointer;
- 
-
 }
-
 .navigation__btn-signout::after {
   content: url(../../image/logout-min.svg);
   float: right;
   margin-right: 5px;
-
 }
 
 .navigation__btn-signout_dark {

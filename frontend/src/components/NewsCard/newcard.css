@@ -10,7 +10,7 @@
 .card__img {
   object-position: center;
   object-fit: cover;
-  min-width: 400px;
+  max-width: 400px;
   height: 272px;
   border-radius: 10px 10px 0px 0px;
 }

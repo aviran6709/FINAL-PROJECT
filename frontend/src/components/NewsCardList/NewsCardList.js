@@ -3,7 +3,6 @@ import Preloader from "../Preloader/Preloader"
 import React from "react";
  const  NewsCardList = (props )=>{
   const {cardData}=props
-  console.log(props.isLogin);
 
 
   
@@ -14,7 +13,7 @@ return(
   <ul className='card-list'>
   {cardData? cardData.map((card, index)=> {
 return(
-<li className="card-list__element" key={index} ><NewsCard data ={card }  isDarkThem = {props.isDarkThem} isSaved={false} isLogin={props.isLogin} ></NewsCard></li>
+<li className="card-list__element" key={index} ><NewsCard data ={card }  isDarkThem = {props.isDarkThem} isSaved={true} isLogin={props.isLogin} ></NewsCard></li>
 )
   }):""}
 

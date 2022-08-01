@@ -2,9 +2,8 @@ import React from "react";
 import Navigation from "../Navigation/Navigation";
 import SearchFrom from "../SearchForm/SearchFrom"
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-function Header ( props ){
- const  headerFuncDta =  props.headerFunc
-   const isLoggedIn =  props.isLoggedIn
+function Header (props){
+
     const [isOpen, setIsOpen]= React.useState(false);
 const closePopups =()=>{
    setIsOpen(false)
@@ -25,8 +24,8 @@ React.useEffect(() => {
 }, [])
     return(
     <header  className ="header" >
-    <Navigation  openPopup={openPopup} isDarkThem={false} isLogin ={isLoggedIn}></Navigation>    
-    <PopupWithForm isOpen={isOpen} login={headerFuncDta.loginFunc} createNewUser={headerFuncDta.registerFunc}
+    <Navigation  openPopup={openPopup} isDarkThem={false} isLogin = {true}></Navigation>    
+    <PopupWithForm isOpen={isOpen}
 onClose={closePopups}
 ></PopupWithForm>
 <SearchFrom></SearchFrom>
