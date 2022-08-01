@@ -1,24 +1,42 @@
-
-
 import About from "../About/About";
-import Perloader from "../Preloader/Preloader"
 import NewsCardList from "../NewsCardList/NewsCardList";
 import React from "react";
+import { UserContext } from "../UserConetext";
+
 function Main (props){
    //uncomment to change newsCardList card data info
-      const cardData =[{imagLink:"https://images.unsplash.com/photo-1517458776179-baae60e41ef2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" , date:"November 4, 2020" ,tittle:"Everyone Needs a Special 'Sit Spot' in Nature" ,text:`Ever since I read Richard Louv's influential book, "Last Child in the Woods," the idea of having a special "sit spot" has stuck with me. This advice, which Louv attributes to nature educator Jon Young, is for both adults and children to find..`,src:"wikiki.cpm",tag:"nature"},{imagLink:"https://images.unsplash.com/photo-1517458776179-baae60e41ef2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" , date:"1.2.1990" ,tittle:"Everyone Needs a Special 'Sit Spot' in Nature" ,text:`Ever since I read Richard Louv's influential book, "Last Child in the Woods," the idea of having a special "sit spot" has stuck with me. This advice, which Louv attributes to nature educator Jon Young, is for both adults and children to find..`,src:"wikiki.cpm",tag:"Macbook",},{imagLink:"https://images.unsplash.com/photo-1517458776179-baae60e41ef2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" , date:"1.2.335" ,tittle:"Everyone Needs a Special 'Sit Spot' in Nature" ,text:`Ever since I read Richard Louv's influential book, "Last Child in the Woods," the idea of having a special "sit spot" has stuck with me. This advice, which Louv attributes to nature educator Jon Young, is for both adults and children to find..`,src:"wikiki.cpm",tag:"love"},{imagLink:"https://images.unsplash.com/photo-1517458776179-baae60e41ef2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" , date:"1.2.1990" ,tittle:"Everyone Needs a Special 'Sit Spot' in Nature" ,text:`Ever since I read Richard Louv's influential book, "Last Child in the Woods," the idea of having a special "sit spot" has stuck with me. This advice, which Louv attributes to nature educator Jon Young, is for both adults and children to find..`,src:"wikiki.cpm",tag:"parent",}]
-//  const cardData =[]
+
+
+const UserData = React.useContext(UserContext);
+
+const [cardToShow,setFullList]=React.useState(3)
+
+const firstSetCard  = props.cardData.slice(0, cardToShow);
+
+
+const handelInternalCards =(e)=>{
+   if ( props.cardData.length < cardToShow) {
+      //used opacity because need to keep the btn style 
+      // i.o get margin between about card-list 
+     e.target.style.opacity = "0";
+   }else{
+      setFullList(cardToShow+3)
+   }
+ 
+   
+}
+
+
+
+
 
 
 
 return( 
-<main  >
+<main   >
+<NewsCardList keyword={props.keyword} onSaveBtnClick={props.onSaveBtnClick}   deleteCard={props.unSavedArticle} isDarkThem={false} isLogin={UserData.isLoggedIn}isFundSome={props.isFundSome} isSearch={props.onSearchStatus} cardData={firstSetCard}  handelInternalCards={handelInternalCards} ></NewsCardList>
 
-<NewsCardList isDarkThem={false} isLogin={true} cardData={cardData}></NewsCardList>
 <About></About>
-
-<Perloader isFund ={true}></Perloader>
-
 </main>
 )
 

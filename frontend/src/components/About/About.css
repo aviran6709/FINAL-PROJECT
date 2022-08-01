@@ -6,6 +6,7 @@
   padding-top: 80px;
   padding-bottom: 80px;
   justify-content: center;
+  /* margin-top: 80px; */
 }
 .about__content {
   display: flex;

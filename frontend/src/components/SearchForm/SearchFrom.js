@@ -1,7 +1,24 @@
+
 import React from "react";
-const SearchFrom = () => {
+const SearchFrom = (props) => {
   //btn color change by click
  const [btnColor,setBtnColor] = React.useState(false);
+ const [keyWord, setKeyWord] = React.useState("");
+
+ const handleChange = (e) => {
+  const {value } = e.target;
+  setKeyWord(
+    value,  
+  )
+}
+
+
+ const handleSubmit=(e)=>{
+  e.preventDefault()
+  setBtnColor(true)
+props.getNews(keyWord)
+ }
+
 
   return (
     <section className="search-from">
@@ -13,11 +30,12 @@ const SearchFrom = () => {
         account.
       </p>
       <form action="#" method="POST"  className="search-from__search-bar">
-        <input className="search-from__input" placeholder="Enter topic"></input>
-        <button className={!btnColor?"search-from__btn":"search-from__btn search-from__btn_clicked"} onClick={(e)=>{
-          e.preventDefault()
-          setBtnColor(true)
-        }}
+        <input className="search-from__input" placeholder="Enter topic"  name="searchBar"
+              required
+              minLength="2"
+              maxLength="40"
+              onChange={handleChange}></input>
+        <button className={!btnColor?"search-from__btn":"search-from__btn search-from__btn_clicked"} onClick={handleSubmit}
          >Search</button>
       </form>
     </section>
