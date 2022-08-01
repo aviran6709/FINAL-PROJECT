@@ -1,7 +1,7 @@
 import PopupWithForm from "./PopupWithForm"
 import React from "react"; 
 import PopupSuccess from "./PopupSuccess"; 
-import  {useFormWithValidation}  from "../NewsCard/FormValidation";
+import  {useFormWithValidation}  from "./FormValidation";
 
 
 const PopupSignup= (props)=>{

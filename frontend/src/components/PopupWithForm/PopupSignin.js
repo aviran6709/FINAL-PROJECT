@@ -1,4 +1,4 @@
-import { useFormWithValidation } from "../NewsCard/FormValidation";
+import { useFormWithValidation } from "./FormValidation";
 import PopupWithForm from "./PopupWithForm"
 import React from "react";
 const PopupSignin =(props)=>{
@@ -18,12 +18,16 @@ const onSubmitSignin = async (evt) => {
     
   };
 
-
+  const handleClosePopups=()=>{
+    resetForm()
+    setEmailStatus("")
+    props.onClose()}
+   
 
 
     return (<PopupWithForm
         openPopup={props.isOpen}
-        onClose={props.onClose}
+        onClose={handleClosePopups}
     
     >
         <form
