@@ -52,6 +52,7 @@ function App() {
       .then((res) => {
         if (res) {
           setIsLoggedIn(true);
+          getSavedArticle();
         }
       })
       .catch(console.log);
@@ -76,6 +77,7 @@ function App() {
   };
 
   const getSavedArticle = () => {
+
     api
       .getArticle()
       .then((res) => {
@@ -140,7 +142,7 @@ function App() {
   };
 
   React.useEffect(() => {
-    if (isLoggedIn === true) {
+    if (isLoggedIn) {
       getUserData();
       getSavedArticle();
     } else {
@@ -165,6 +167,7 @@ function App() {
                   registerFunc={createNewUser}
                   logout={logout}
                   loginFunc={login}
+                  getArticle={getSavedArticle}
                 />{" "}
                 <Main
                   unSavedArticle={deleteArticle}

@@ -4,13 +4,15 @@ import React from "react";
 const PopupSignin =(props)=>{
   const { values, handleChange, errors, isValid, resetForm   } =  useFormWithValidation()
   const [emailStatus, setEmailStatus] = React.useState("");
-// func from App
+// popup login  the login func is props from app  same getSaveArticle
 const onSubmitSignin = async (evt) => {
     evt.preventDefault();
      const token = await props.login(values);
+     await props.getSavedArticle();
      if(typeof token==='object'){
       localStorage.clear()
       localStorage.setItem('jwt', token.token)
+    
       props.onClose()
      }else{
       setEmailStatus("the user with the specified email not found "); 

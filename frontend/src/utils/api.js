@@ -3,7 +3,6 @@ const customFetch = (url, headers) => {
     return fetch(url, headers).then((res) => {
         if (res.ok) {  return res.json(); }
         else { 
-            console.log(res);
             Promise.reject(res.statusText); }
     })
 

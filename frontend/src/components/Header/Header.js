@@ -44,6 +44,7 @@ function Header(props) {
         togglePopups={togglePopups}
         onClose={closePopups}
         login={props.loginFunc}
+        getSavedArticle={props.getArticle}
       />
       <SearchFrom getNews={props.getNews}></SearchFrom>
     </header>
