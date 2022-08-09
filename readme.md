@@ -3,7 +3,8 @@ Is my final project at practicum100 full stack developed bootcamp
 
 *That app let you search news articles and save them
 I used css react and newsApi server to get the articles
-*For the back side
+
+For the back side
 i used nodejs express mongodb and others  node folders 
 
 
