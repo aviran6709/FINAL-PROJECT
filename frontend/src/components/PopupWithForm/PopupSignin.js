@@ -1,13 +1,14 @@
-import { useFormWithValidation } from "./FormValidation";
-import PopupWithForm from "./PopupWithForm"
+import { useFormWithValidation } from "../../hooks/FormValidation";
+
 import React from "react";
 const PopupSignin =(props)=>{
   const { values, handleChange, errors, isValid, resetForm   } =  useFormWithValidation()
   const [emailStatus, setEmailStatus] = React.useState("");
-// func from App
+// popup login  the login func is props from app  same getSaveArticle
 const onSubmitSignin = async (evt) => {
     evt.preventDefault();
      const token = await props.login(values);
+     // props.getSavedArticle();
      if(typeof token==='object'){
       localStorage.clear()
       localStorage.setItem('jwt', token.token)
@@ -25,11 +26,18 @@ const onSubmitSignin = async (evt) => {
    
 
 
-    return (<PopupWithForm
-        openPopup={props.isOpen}
-        onClose={handleClosePopups}
-    
+    return (
+      <div
+      onClick={handleClosePopups}
+      className={props.isOpen ? "popup popup_open" : "popup"}
     >
+      <div
+        onClick={(evt) => {
+          //cancel onClick func on that div
+          evt.stopPropagation();
+        }}
+        className="popup__block"
+      >
         <form
           className="popup__form"
           onSubmit={onSubmitSignin}
@@ -90,7 +98,11 @@ const onSubmitSignin = async (evt) => {
             Sign up
           </span>
         </p>
-</PopupWithForm>
+        <button onClick={handleClosePopups} className="popup__close-btn"></button>
+
+</div>
+</div>
+
   )
 }
 export default PopupSignin;

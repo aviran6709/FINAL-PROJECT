@@ -1,4 +1,4 @@
-import { UserContext } from "../UserConetext";
+import { UserContext } from "../../contexts/UserConetext";
 import Navigation from "../Navigation/Navigation"
 import NewsCardList from "../NewsCardList/NewsCardList"
 import React from "react";

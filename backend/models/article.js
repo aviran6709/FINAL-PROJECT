@@ -8,10 +8,9 @@ const articleSchema = new mongo.Schema({
   title: {
     type: String,
     minlength: 4,
-    maxlength: 30,
     require: true,
   },
-  text: {
+  content: {
     type: String,
     required: true,
     minlength: 4,
@@ -22,7 +21,12 @@ const articleSchema = new mongo.Schema({
     required: true,
 
   },
-  link: {
+  publishedAt: {
+    type: String,
+    required: true,
+
+  },
+  url: {
     type: String,
     validate: {
       validator(v) {
@@ -34,7 +38,7 @@ const articleSchema = new mongo.Schema({
     required: true,
   },
 
-  image: {
+  urlToImage: {
     type: String,
     validate: {
       validator(v) {

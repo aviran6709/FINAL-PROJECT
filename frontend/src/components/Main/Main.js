@@ -1,7 +1,7 @@
 import About from "../About/About";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import React from "react";
-import { UserContext } from "../UserConetext";
+import { UserContext } from "../../contexts/UserConetext";
 
 function Main(props) {
   //uncomment to change newsCardList card data info

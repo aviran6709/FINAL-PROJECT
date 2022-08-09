@@ -17,20 +17,23 @@ mongoose.connect(MONGO_URI, {
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
-
+const cors = require("cors");
 const users = require('./routes/users');
 const articles = require('./routes/articles');
 const midServerError = require('./errors/midServerError');
 const NotFundError = require('./errors/NotFundError');
 const { errorLogger, requestLogger } = require('./midelweres/logger');
-const { creatUsers, login } = require('./controllers/users');
+const { createUsers, login } = require('./controllers/users');
 const auth = require('./midelweres/auth');
 const {signinSchema,signupSchema} = require("./models/joiScema")
+const allowedOrigins = [
+  "http://localhost:3000", // Use the port your frontend is served on
+];
 
+app.use(cors(allowedOrigins)); 
 // req log winston
 app.use(requestLogger);
-
-app.post('/signup',celebrate(signupSchema), creatUsers);
+app.post('/signup',celebrate(signupSchema), createUsers);
 app.post('/signin',celebrate(signinSchema),login);
 app.use(auth);
 app.use('/users', users);

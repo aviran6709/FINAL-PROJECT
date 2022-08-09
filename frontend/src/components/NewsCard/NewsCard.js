@@ -1,5 +1,5 @@
 import React from "react";
-import { UserContext } from "../UserConetext";
+import { UserContext } from "../../contexts/UserConetext";
 
 const NewsCard = (props) => {
   const data = React.useContext(UserContext);
@@ -24,7 +24,6 @@ const NewsCard = (props) => {
       props.onSaveBtnClick(props.data);
     }
     if (props.isDarkThem) {
-      console.log(props.data._id);
       props.deleteCard(props.data._id);
       // evt.target.parentElement.remove()
     }

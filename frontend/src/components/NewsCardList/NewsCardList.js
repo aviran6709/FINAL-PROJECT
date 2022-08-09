@@ -1,5 +1,5 @@
  import NewsCard from "../NewsCard/NewsCard"
- import { UserContext } from "../UserConetext";
+ import { UserContext } from "../../contexts/UserConetext";
 import Preloader from "../Preloader/Preloader"
 import React from "react";
  const  NewsCardList = (props )=>{
@@ -7,7 +7,6 @@ import React from "react";
 let saveStatus
 const data =  React.useContext(UserContext);
 const savedCardData =  data.savedCard
-console.log(data.badConnectionToServer);
 if(data.badConnectionToServer)
 {
   return(<span className="error-server">Sorry, something went wrong during the request. There may be a connection issue or the server may be down. Please try again later.</span>)

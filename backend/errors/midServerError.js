@@ -3,7 +3,7 @@ module.exports = (err, req, res, next) => {
   const statusCode = err.statusCode ? err.statusCode: 500;
   res
     .status(statusCode)
-    .send({
+   return({
       message: statusCode === 500
         ? 'error occurred on the server @'
         : message,

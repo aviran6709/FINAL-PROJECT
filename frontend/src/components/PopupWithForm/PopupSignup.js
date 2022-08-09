@@ -1,7 +1,7 @@
-import PopupWithForm from "./PopupWithForm"
+
 import React from "react"; 
 import PopupSuccess from "./PopupSuccess"; 
-import  {useFormWithValidation}  from "./FormValidation";
+import  {useFormWithValidation}  from "../../hooks/FormValidation";
 
 
 const PopupSignup= (props)=>{
@@ -32,9 +32,10 @@ const handleClosePopups=()=>{
 const onSubmitSignup = async (evt) => {
     evt.preventDefault();
     const status = await props.createNewUser(values);
+    console.log(status);
     const isBoolean = val => 'boolean' === typeof val;
     if(isBoolean(status)){
-      setIsSuccess(await status)
+      setIsSuccess( status)
     }else{
       setEmailStatus(status)
     }
@@ -49,11 +50,17 @@ if(isSuccess){
         
 }
 
-    return (<PopupWithForm
-        openPopup={props.isOpen}
-        onClose={props.onClose}
-    
+    return (  <div
+      onClick={handleClosePopups}
+      className={props.isOpen ? "popup popup_open" : "popup"}
     >
+      <div
+        onClick={(evt) => {
+          //cancel onClick func on that div
+          evt.stopPropagation();
+        }}
+        className="popup__block"
+      >
             <form
               className="popup__form"
               onSubmit={onSubmitSignup}
@@ -132,7 +139,10 @@ if(isSuccess){
                 Sign in
               </span>
             </p>
-            </PopupWithForm>
+            <button onClick={props.onClose} className="popup__close-btn"></button>
+
+</div>
+</div>
       );
 
  }

@@ -5,7 +5,7 @@ import PopupSignup from "../PopupWithForm/PopupSignup";
 import PopupSignin from "../PopupWithForm/PopupSignin";
 function Header(props) {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [signinPopup, setSigninPopup] = React.useState(false);
+  const [signinPopup, setSigninPopup] = React.useState(true);
   const closePopups = () => {
     setIsOpen(false);
   };
@@ -44,6 +44,7 @@ function Header(props) {
         togglePopups={togglePopups}
         onClose={closePopups}
         login={props.loginFunc}
+        getSavedArticle={props.getArticle}
       />
       <SearchFrom getNews={props.getNews}></SearchFrom>
     </header>

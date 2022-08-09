@@ -6,16 +6,18 @@ const InvalidDataError = require('../errors/InvalidDataError');
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
-  // console.log(authorization);
+
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    throw new InvalidDataError('Authorization Required');
+    res.send({status:false})
+    throw new InvalidDataError('Authorization Required 2');
   }
   const token = authorization.replace('Bearer ', '');
   let payload;
   try {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
-    throw new InvalidDataError('Authorization Required');
+    // console.log(err);
+    throw new InvalidDataError('Authorization Required 3');
   }
 
   req.user = payload;
