@@ -2,10 +2,10 @@
 Is my final project at practicum100 full stack developed bootcamp
 
 *That app let you search news articles and save them
-I used css react and newsApi server to get the articles
+I used css ,react and newsApi server to get the articles
 
 For the back side
-i used nodejs express mongodb and others  node folders 
+i used nodejs, express ,mongodb and others  node folders 
 
 
 
@@ -18,4 +18,6 @@ npm i
 
 * start 
 npm run start
+* dev mode
 npm run dev
+
