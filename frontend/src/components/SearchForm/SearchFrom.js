@@ -29,13 +29,14 @@ props.getNews(keyWord)
         Find the latest news on any topic and save them in your personal
         account.
       </p>
-      <form action="#" method="POST"  className="search-from__search-bar">
+      <form action="#" method="POST" onSubmit={handleSubmit} className="search-from__search-bar" >
         <input className="search-from__input" placeholder="Enter topic"  name="searchBar"
               required
               minLength="2"
               maxLength="40"
+              value={keyWord?keyWord:""}
               onChange={handleChange}></input>
-        <button className={!btnColor?"search-from__btn":"search-from__btn search-from__btn_clicked"} onClick={handleSubmit}
+        <button className={!btnColor?"search-from__btn":"search-from__btn search-from__btn_clicked"} 
          >Search</button>
       </form>
     </section>

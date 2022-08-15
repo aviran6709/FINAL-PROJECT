@@ -91,9 +91,9 @@ class Api {
 
  const api = new Api({
     // baseUrl: `https://api.aviran.students.nomoreparties.sbs`,
-    baseUrl: `http://localhost:3003`,
+    baseUrl: `http://localhost:3000`,
     headers: {
-       // 'Access-Control-Allow-Origin': '*',
+       'Access-Control-Allow-Origin': '*',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         authorization:`Bearer ${localStorage.getItem("jwt")}`,

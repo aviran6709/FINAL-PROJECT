@@ -1,12 +1,18 @@
 import React from "react"
-import PopupWithForm from "./PopupWithForm"
 const PopupSuccess =(props)=>{
     return (
-<PopupWithForm 
-      openPopup={props.isOpen}
-      onClose={props.onClose}
-    
+
+<div
+      onClick={props.onClose()}
+      className={props.isOpen ? "popup popup_open" : "popup"}
     >
+      <div
+        onClick={(evt) => {
+          //cancel onClick func on that div
+          evt.stopPropagation();
+        }}
+        className="popup__block"
+      >
           <p className="popup__text">Registration successfully completed!</p>
           <div className="popup__subtitle">
             <p
@@ -16,7 +22,11 @@ const PopupSuccess =(props)=>{
               Sign in
             </p>
           </div>
-          </PopupWithForm>
+          <button onClick={props.onClose()} className="popup__close-btn"></button>
+
+          </div>
+          </div>
+      
     );
   }
 export default PopupSuccess;

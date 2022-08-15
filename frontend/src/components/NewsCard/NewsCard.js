@@ -1,5 +1,5 @@
 import React from "react";
-import { UserContext } from "../UserConetext";
+import { UserContext } from "../../contexts/UserConetext";
 
 const NewsCard = (props) => {
   const data = React.useContext(UserContext);

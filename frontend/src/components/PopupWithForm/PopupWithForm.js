@@ -2,8 +2,6 @@ import React from "react";
 const PopupWithForm = (props) => {
 
     return (
-    
-
       <div
         onClick={props.onClose}
         className={props.openPopup ? "popup popup_open" : "popup"}
@@ -15,11 +13,19 @@ const PopupWithForm = (props) => {
           }}
           className="popup__block"
         >
+ <form
+              className="popup__form"
+              onSubmit={props.onSubmit}
+              action="#"
+              method="POST"
+             // name={"signup"}
+            >
           <button onClick={props.onClose} className="popup__close-btn"></button>
          {/* here goes form */}
          {props.children}
 {/* here go the span part  */}
-        </div>
+</form>
+        </div> 
       </div>
     )
   }

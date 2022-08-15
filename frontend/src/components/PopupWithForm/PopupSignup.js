@@ -1,7 +1,8 @@
-import PopupWithForm from "./PopupWithForm"
+
 import React from "react"; 
 import PopupSuccess from "./PopupSuccess"; 
-import  {useFormWithValidation}  from "./FormValidation";
+import  {useFormWithValidation}  from "../../hooks/FormValidation";
+import PopupWithForm from "./PopupWithForm";
 
 
 const PopupSignup= (props)=>{
@@ -34,7 +35,7 @@ const onSubmitSignup = async (evt) => {
     const status = await props.createNewUser(values);
     const isBoolean = val => 'boolean' === typeof val;
     if(isBoolean(status)){
-      setIsSuccess(await status)
+      setIsSuccess( status)
     }else{
       setEmailStatus(status)
     }
@@ -49,18 +50,14 @@ if(isSuccess){
         
 }
 
-    return (<PopupWithForm
-        openPopup={props.isOpen}
-        onClose={props.onClose}
-    
-    >
-            <form
-              className="popup__form"
-              onSubmit={onSubmitSignup}
-              action="#"
-              method="POST"
-              name={"signup"}
-            >
+    return (  
+      <PopupWithForm
+      onSubmit={onSubmitSignup}
+      onClose={handleClosePopups}
+      openPopup={props.isOpen}
+      
+      >
+      
               <h1 className="popup__tittle">sign up</h1>
               <label htmlFor="email" className="popup__label">
                 Email
@@ -114,7 +111,7 @@ if(isSuccess){
                 value={values.name?values.name:''}
               />
    <span className="popup__error-massage"> {errors.name? `${errors.name}`: ""}</span>
-              {/* {props.children} */}
+            
               <span className="popup__error-massage_type_email"> {emailStatus? `${emailStatus}`: ""}</span>
               <button
                 className={ isValid?"popup__button ":" popup__button popup__button_disabled"}
@@ -122,7 +119,7 @@ if(isSuccess){
               >
                 Sign up
               </button>
-            </form>
+      
             <p className="popup__subtitle">
               or{" "}
               <span
@@ -132,7 +129,9 @@ if(isSuccess){
                 Sign in
               </span>
             </p>
+            <button onClick={props.onClose} className="popup__close-btn"></button>
             </PopupWithForm>
+
       );
 
  }

@@ -1,6 +1,6 @@
 import React from "react";
 import api from "../../utils/api";
-import { UserContext } from "../UserConetext";
+import { UserContext } from "../../contexts/UserConetext";
 import Footer from "../Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import SaveNewsHeader from "../SavedNewsHeader/SaveNewsHeader";
@@ -8,6 +8,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ProtectedRoute from "../ProtectedRoute";
 import getNewsRequest from "../../utils/NewsApi";
+
 
 function App() {
   const [data, setData] = React.useState([]);
@@ -24,6 +25,7 @@ function App() {
   // if the object is what the function get(token.name) is Not accepted ,
   // try call setData(token.name) on popUP login as a handelLogin func
   const login = async (data) => {
+
     const token = await api
       .signin(data)
       .then((res) => {
@@ -35,6 +37,7 @@ function App() {
       setIsLoggedIn(true);
       //set the name for btn
       setData(token.name);
+      
     }
 
     return token;
@@ -52,7 +55,6 @@ function App() {
       .then((res) => {
         if (res) {
           setIsLoggedIn(true);
-          getSavedArticle();
         }
       })
       .catch(console.log);
@@ -77,14 +79,11 @@ function App() {
   };
 
   const getSavedArticle = () => {
-
-    api
+ return   api
       .getArticle()
       .then((res) => {
-        if (res) {
           setSavedCard(res);
-          return res;
-        }
+          return res
       })
       .catch(console.log);
   };
@@ -95,7 +94,7 @@ function App() {
       .then((res) => {
         if (res) {
           setData(res.name);
-
+          getSavedArticle()
           return res;
         }
       })
@@ -144,7 +143,6 @@ function App() {
   React.useEffect(() => {
     if (isLoggedIn) {
       getUserData();
-      getSavedArticle();
     } else {
       checkToken();
     }

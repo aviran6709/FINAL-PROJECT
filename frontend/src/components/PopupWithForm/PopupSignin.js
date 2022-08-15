@@ -1,18 +1,19 @@
-import { useFormWithValidation } from "./FormValidation";
-import PopupWithForm from "./PopupWithForm"
+import { useFormWithValidation } from "../../hooks/FormValidation";
+
 import React from "react";
+import PopupWithForm from "./PopupWithForm";
 const PopupSignin =(props)=>{
   const { values, handleChange, errors, isValid, resetForm   } =  useFormWithValidation()
   const [emailStatus, setEmailStatus] = React.useState("");
 // popup login  the login func is props from app  same getSaveArticle
+
+
 const onSubmitSignin = async (evt) => {
     evt.preventDefault();
      const token = await props.login(values);
-     await props.getSavedArticle();
      if(typeof token==='object'){
       localStorage.clear()
       localStorage.setItem('jwt', token.token)
-    
       props.onClose()
      }else{
       setEmailStatus("the user with the specified email not found "); 
@@ -27,18 +28,14 @@ const onSubmitSignin = async (evt) => {
    
 
 
-    return (<PopupWithForm
-        openPopup={props.isOpen}
-        onClose={handleClosePopups}
-    
-    >
-        <form
-          className="popup__form"
-          onSubmit={onSubmitSignin}
-          action="#"
-          method="POST"
-          name={"signin"}
-        >
+    return (
+      <PopupWithForm
+      onSubmit={onSubmitSignin}
+      onClose={handleClosePopups}
+      openPopup={props.isOpen}
+      
+      >
+
           <h1 className="popup__tittle">sign in</h1>
           <label htmlFor="email" className="popup__label">
             Email
@@ -82,7 +79,7 @@ const onSubmitSignin = async (evt) => {
                 type={isValid?"submit": ""}>
             Sign in
           </button>
-        </form>
+    
         <p className="popup__subtitle">
           or{" "}
           <span
@@ -92,7 +89,12 @@ const onSubmitSignin = async (evt) => {
             Sign up
           </span>
         </p>
-</PopupWithForm>
+       
+       <button onClick={handleClosePopups} className="popup__close-btn"></button>
+       </PopupWithForm>
+
+
+
   )
 }
 export default PopupSignin;

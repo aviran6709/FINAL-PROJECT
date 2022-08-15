@@ -1,5 +1,5 @@
  import NewsCard from "../NewsCard/NewsCard"
- import { UserContext } from "../UserConetext";
+ import { UserContext } from "../../contexts/UserConetext";
 import Preloader from "../Preloader/Preloader"
 import React from "react";
  const  NewsCardList = (props )=>{

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../UserConetext";
+import { UserContext } from "../../contexts/UserConetext";
 
 function Navigation(props) {
   const data = React.useContext(UserContext);
