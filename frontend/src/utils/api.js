@@ -77,8 +77,8 @@ class Api {
 }
 
 const api = new Api({
-//   baseUrl: `https://api.aviran.students.nomoreparties.sbs`,
-  baseUrl: `http://localhost:3000`,
+   baseUrl: `https://api.aviran.students.nomoreparties.sbs`,
+//  baseUrl: `http://localhost:3000`,
   headers: {
     "Access-Control-Allow-Origin": "*",
     Accept: "application/json",
