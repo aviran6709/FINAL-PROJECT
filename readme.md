@@ -1,14 +1,16 @@
-# the backend side of final project
-* the code will updated on backend branch
-* for api link use (http://api.aviran.students.nomoreparties.sbs:3000 | http://35.245.211.166:3000)
-* used with node express server 
+Is my final project at practicum100 full stack developed bootcamp
 
-news api id 9c2c6c1be55249cfad5a81d71ce5caf2
+*That app let you search news articles and save them on saved articles the user can delete old articles
 
-### commands
-* dependencies :
-npm i
+I used css ,react and newsApi server to get the articles
 
-* start 
-npm run start
-npm run dev
+For the back side i used nodejs, express ,mongodb and others node folders used nginx and certbot
+
+For api link use (http://api.aviran.students.nomoreparties.sbs:3000 | http://35.245.211.166:3000)
+For full website (https://aviran.students.nomoredomainssbs.ru/)
+commands
+dependencies : npm i
+
+start npm run start
+
+dev mode npm run dev
