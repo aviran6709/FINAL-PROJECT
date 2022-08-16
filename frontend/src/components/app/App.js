@@ -9,7 +9,6 @@ import Main from "../Main/Main";
 import ProtectedRoute from "../ProtectedRoute";
 import getNewsRequest from "../../utils/NewsApi";
 
-
 function App() {
   const [data, setData] = React.useState([]);
   const [savedCard, setSavedCard] = React.useState([]);
@@ -17,7 +16,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   //the search news status
   const [onSearch, setOnSearch] = React.useState(false);
-  const [badConnectionToServer, setBadConnectionToServer] = React.useState(false);
+  const [badConnectionToServer, setBadConnectionToServer] =
+    React.useState(false);
   const [isFundSome, setIsFundSome] = React.useState(true);
   const [newsCardData, setNewsCardData] = React.useState([]);
   const [keyword, setKeyword] = React.useState("");
@@ -25,7 +25,6 @@ function App() {
   // if the object is what the function get(token.name) is Not accepted ,
   // try call setData(token.name) on popUP login as a handelLogin func
   const login = async (data) => {
-
     const token = await api
       .signin(data)
       .then((res) => {
@@ -37,7 +36,6 @@ function App() {
       setIsLoggedIn(true);
       //set the name for btn
       setData(token.name);
-      
     }
 
     return token;
@@ -79,11 +77,11 @@ function App() {
   };
 
   const getSavedArticle = () => {
- return   api
+    return api
       .getArticle()
       .then((res) => {
-          setSavedCard(res);
-          return res
+        setSavedCard(res);
+        return res;
       })
       .catch(console.log);
   };
@@ -94,7 +92,7 @@ function App() {
       .then((res) => {
         if (res) {
           setData(res.name);
-          getSavedArticle()
+          getSavedArticle();
           return res;
         }
       })
@@ -106,17 +104,15 @@ function App() {
     setKeyword(searchResults);
     getNewsRequest(searchResults)
       .then((res) => {
-        if ( typeof res ==="boolean") {
-       setBadConnectionToServer(true)
-        }else{
+        if (typeof res === "boolean") {
+          setBadConnectionToServer(true);
+        } else {
           setNewsCardData(res.articles);
           if (newsCardData.length === 0) {
             setIsFundSome(false);
           }
           setOnSearch(false);
-
         }
-       
       })
       .catch(console.log);
   };
@@ -152,7 +148,12 @@ function App() {
   return (
     <div className="app">
       <UserContext.Provider
-        value={{ user: data, savedCard: savedCard, isLoggedIn: isLoggedIn  , badConnectionToServer:badConnectionToServer }}
+        value={{
+          user: data,
+          savedCard: savedCard,
+          isLoggedIn: isLoggedIn,
+          badConnectionToServer: badConnectionToServer,
+        }}
       >
         <Routes>
           <Route

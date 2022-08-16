@@ -1,33 +1,33 @@
 import React from "react";
-const PopupWithForm = (props) => {
-
-    return (
+const PopupWithForm = ({ children, onClose, openPopup, onSubmitForm }) => {
+  return (
+    <div onClick={onClose} className={openPopup ? "popup popup_open" : "popup"}>
       <div
-        onClick={props.onClose}
-        className={props.openPopup ? "popup popup_open" : "popup"}
+        onClick={(evt) => {
+          //cancel onClick func on that div
+          evt.stopPropagation();
+        }}
+        className="popup__block"
       >
-        <div
-          onClick={(evt) => {
-            //cancel onClick func on that div
-            evt.stopPropagation();
-          }}
-          className="popup__block"
+        <form
+          className="popup__form"
+          onSubmit={onSubmitForm}
+          action="#"
+          method="POST"
+          // name={"signup"}
         >
- <form
-              className="popup__form"
-              onSubmit={props.onSubmit}
-              action="#"
-              method="POST"
-             // name={"signup"}
-            >
-          <button onClick={props.onClose} className="popup__close-btn"></button>
-         {/* here goes form */}
-         {props.children}
-{/* here go the span part  */}
-</form>
-        </div> 
+          <button
+            type="button"
+            onClick={onClose}
+            className="popup__close-btn"
+          ></button>
+          {/* here goes form */}
+          {children}
+          {/* here go the span part  */}
+        </form>
       </div>
-    )
-  }
+    </div>
+  );
+};
 
 export default PopupWithForm;
