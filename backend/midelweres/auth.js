@@ -9,15 +9,15 @@ module.exports = (req, res, next) => {
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
     res.send({status:false})
-    throw new InvalidDataError('Authorization Required 2');
+    throw new InvalidDataError('Authorization Required ');
   }
   const token = authorization.replace('Bearer ', '');
   let payload;
   try {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
-    // console.log(err);
-    throw new InvalidDataError('Authorization Required 3');
+  
+    throw new InvalidDataError('Authorization Required ');
   }
 
   req.user = payload;
