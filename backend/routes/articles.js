@@ -8,4 +8,3 @@ router.post('/', createArticles);
 router.delete('/:id', deleteArticles);
 
 module.exports = router;
-// celebrate(articleSchema)
